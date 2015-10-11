@@ -69,11 +69,8 @@ public class Problem1 {
                         DFS_VISIT(e.get_v());
                         break;
                     case "GRAY":
-                        // if v has been discovered, but not finished does not 
-                        // have parent u, then it is a back edge.
-                        //System.out.println(e.get_v().getParent().toString());
-                        if (u.getParent() != e.get_v()) e.setClassification("BACK");
-                        else e.setClassification("TREE");
+                        // if v has been discovered, but not finished then it is a back edge.
+                        e.setClassification("BACK");
                         break;
                     case "BLACK":
                         // get a list of ancestors

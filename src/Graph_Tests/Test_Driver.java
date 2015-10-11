@@ -24,7 +24,6 @@ public class Test_Driver {
         );
         
         
-        
         /* PROBLEM 1 OUTPUT */
         System.out.println(
                 "Problem 1:\n"
@@ -33,8 +32,6 @@ public class Test_Driver {
                 + "\tcategories: tree edge, back edge, forward\n"
                 + "\tedge and cross edge.\n\n"
         );
-        
-        
         /* PROBLEM 1 REQUIRED INPUT */
         //                        0    1    2    3    4    5    6
         String[] p1_req_verts = {"A", "B", "C", "D", "E", "F", "G"};
@@ -94,7 +91,6 @@ public class Test_Driver {
                 + "\tgraph does not have one.\n\n"
         );
         System.out.println("\n");
-        
         /* PROBLEM 2 REQUIRED INPUT */
         //                        0    1    2    3    4    5    6    7    8    9
         String[] p2_req_verts = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
@@ -111,8 +107,10 @@ public class Test_Driver {
             E2_1.add(new Edge(V2_1.get(e[0]), V2_1.get(e[1])));
             E2_1.add(new Edge(V2_1.get(e[1]), V2_1.get(e[0])));
         }
-        
         Problem2 P2_1 = new Problem2(V2_1, E2_1);
+        
+        
+        
         
         
         /* PROBLEM 3 OUTPUT */
@@ -146,8 +144,7 @@ public class Test_Driver {
         } else { 
             System.out.println("The required input does not contain a cycle."); 
         }
-        System.out.println("\n");
-        
+        System.out.println();
         
         /* PROBLEM 3 STUDENT INPUT */
         //                       0    1    2    3    4    5    6
@@ -172,14 +169,9 @@ public class Test_Driver {
         } else {
             System.out.println("The student input does not contain a cycle.");
         }
-        P3_2.G.E.stream().forEach((e) -> {
-            System.out.println(e.toString() + " => " + e.getClassification());
-        });
-        
-        
         System.out.println("\n");
         
-        
+
         /* PROBLEM 4 OUTPUT */
         System.out.println(
                 "Problem 4:\n"
