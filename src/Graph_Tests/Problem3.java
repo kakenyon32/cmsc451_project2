@@ -16,7 +16,6 @@ import java.util.*;
 public class Problem3 {
     // The graph on which to perform the analysis
     public final Graph G;
-    private int time;
     private boolean cycle = false;
     
     public Problem3(ArrayList<Vertex> V, ArrayList<Edge> E) {
@@ -29,12 +28,11 @@ public class Problem3 {
      * @param G the graph on which to do the DFS
      * Sets the Graph's containCycle boolean to true if a cycle is present
      */
-    public final void DFS(Graph G) {
+    private void DFS(Graph G) {
         G.V.stream().forEach((u) -> {
             u.setColor("WHITE");
             u.setParent(null);
         });
-        time = 0;
         G.V.stream().forEach((u) -> {
             if (u.getColor().equals("WHITE")) {
                 DFS_VISIT(u);
@@ -48,7 +46,7 @@ public class Problem3 {
      * The visit function for each vertex in a DFS
      * @param u the Vertex to be visited
      */
-    public void DFS_VISIT(Vertex u) {
+    private void DFS_VISIT(Vertex u) {
         u.setColor("GRAY");
         if (!G.adj.get(u).isEmpty()) {
             G.adj.get(u).stream().forEach((e)  -> {

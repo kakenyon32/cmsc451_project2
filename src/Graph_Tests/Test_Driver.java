@@ -107,7 +107,12 @@ public class Test_Driver {
             E2_1.add(new Edge(V2_1.get(e[0]), V2_1.get(e[1])));
             E2_1.add(new Edge(V2_1.get(e[1]), V2_1.get(e[0])));
         }
-        Problem2 P2_1 = new Problem2(V2_1, E2_1);
+        //Problem2 P2_1 = new Problem2(V2_1, E2_1);
+        //LinkedList<Vertex> euler = P2_1.getEuler();
+        //euler.stream().forEach((v) -> {
+        //    System.out.print(v.toString() + " -> ");
+        //});
+        //System.out.println();
         
         
         

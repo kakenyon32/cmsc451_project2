@@ -24,7 +24,7 @@ public class Problem4 {
         BFS(G, V.get(0));
     }
     
-    public final void BFS(Graph G, Vertex start) {
+    private void BFS(Graph G, Vertex start) {
         G.V.stream().forEach((v) -> {
             v.setColor("WHITE");
             v.setDiscovery(0);
@@ -73,7 +73,7 @@ public class Problem4 {
      * @param u the Vertex to be traced
      * @return a list of ancestors to a root Vertex
      */
-    public ArrayList<Vertex> Traverse(Vertex u) {
+    private ArrayList<Vertex> Traverse(Vertex u) {
         ArrayList<Vertex> ancestors = new ArrayList<>();
         while (u.getParent() != null) {
             ancestors.add(u.getParent());

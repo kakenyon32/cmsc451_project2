@@ -36,7 +36,7 @@ public class Problem1 {
      * Runs a Depth-First Search on G
      * @param G the graph on which to do the DFS
      */
-    public final void DFS(Graph G) {
+    private void DFS(Graph G) {
         G.V.stream().forEach((u) -> {
             u.setColor("WHITE");
             u.setParent(null);
@@ -53,7 +53,7 @@ public class Problem1 {
      * The visit function for each vertex in a DFS
      * @param u the Vertex to be visited
      */
-    public void DFS_VISIT(Vertex u) {
+    private void DFS_VISIT(Vertex u) {
         u.setColor("GRAY");
         u.setDiscovery(time);
         time++;
@@ -92,7 +92,7 @@ public class Problem1 {
      * @param u the Vertex to be traced
      * @return a list of ancestors to a root Vertex
      */
-    public ArrayList<Vertex> Traverse(Vertex u) {
+    private ArrayList<Vertex> Traverse(Vertex u) {
         ArrayList<Vertex> ancestors = new ArrayList<>();
         while (u.getParent() != null) {
             ancestors.add(u.getParent());

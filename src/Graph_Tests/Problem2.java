@@ -16,8 +16,28 @@ import java.util.*;
 public class Problem2 {
     // The graph on which to perform the analysis
     public final Graph G;
+    private LinkedList<Vertex> euler = new LinkedList<>();
+    private Vertex currentVertex;
     
     public Problem2(ArrayList<Vertex> V, ArrayList<Edge> E) {
         G = new Graph(V, E);
+        findEuler(G);
     }
+    
+    private void findEuler(Graph G) {
+        currentVertex = G.V.get(0);
+        makePath(currentVertex);
+    }
+    
+    private void makePath(Vertex v) {
+        euler.add(v);
+        while (G.adj.size() > 0) {
+            if (!G.adj.get(v).isEmpty()) {
+                currentVertex = G.adj.get(v).remove(0).get_v();
+                makePath(v);
+            }
+        }
+    }
+    
+    public LinkedList<Vertex> getEuler() { return euler; }
 }

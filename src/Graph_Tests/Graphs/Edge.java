@@ -13,6 +13,7 @@ public class Edge {
     // variables for the Edge definition
     private final Vertex u, v;
     private String classification;
+    private boolean visited = false;
     
     /**
      * Constructor for an Edge
@@ -50,4 +51,10 @@ public class Edge {
     public String getClassification() {
         return classification;
     }
+    
+    /** sets visited to true if edge is visited */
+    public void visit() { visited = true; }
+    
+    /** @return whether the edge has been visited */
+    public boolean isVisited() { return visited; }
 }
