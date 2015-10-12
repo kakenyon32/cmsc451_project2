@@ -32,6 +32,7 @@ public class Problem4 {
         });
         start.setColor("GRAY");
         Q.add(start);
+        ArrayList<Edge> possible = new ArrayList<>();
         while (!Q.isEmpty()) {
             if (!G.adj.get(Q.peek()).isEmpty()) {
                 G.adj.get(Q.peek()).stream().forEach((e) -> {
@@ -39,22 +40,45 @@ public class Problem4 {
                         e.get_v().setColor("GRAY");
                         e.get_v().setDiscovery(Q.peek().getDiscovery() + 1);
                         e.get_v().setParent(Q.peek());
-                        e.setClassification("TREE");
                         Q.add(e.get_v());
                     } else {
-                        // because this is a directed graph, if the Vertex has
-                        // been visited previously, and is at a depth equal to or
-                        // less than the current "u", then there exists a cycle.
-                        if (e.get_v().getDiscovery() < Q.peek().getDiscovery()) 
-                            cycle = true;
+                        // because this is a directed graph, if "v" has been
+                        // visited previously, and is at a depth less than the
+                        // current "u", then there may be a cycle.
+                        if (e.get_v().getDiscovery() < Q.peek().getDiscovery())
+                            possible.add(e);
                     }
                 });
             }
             Q.peek().setColor("BLACK");
             Q.remove();
         }
+        
+        possible.stream().forEach((e) -> {
+            ArrayList<Vertex> list = Traverse(e.get_u());
+            if (list.contains(e.get_v())) cycle = true;
+            else {
+                G.adj.get(e.get_v()).stream().forEach((e2) -> {
+                    if (list.contains(e2.get_v())) cycle = true;
+                });
+            }
+        });
     }
     
     /** @return whether a cycle exists in the BFS */
     public boolean getCycle() { return cycle; }
+    
+    /**
+     * Traverses the ancestor path of a given Vertex
+     * @param u the Vertex to be traced
+     * @return a list of ancestors to a root Vertex
+     */
+    public ArrayList<Vertex> Traverse(Vertex u) {
+        ArrayList<Vertex> ancestors = new ArrayList<>();
+        while (u.getParent() != null) {
+            ancestors.add(u.getParent());
+            u = u.getParent();
+        }
+        return ancestors;
+    }
 }

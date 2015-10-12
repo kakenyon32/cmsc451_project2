@@ -215,6 +215,22 @@ public class Test_Driver {
         Problem4 P4_2 = new Problem4(V4_2, E4_2);
         if (P4_2.getCycle()) System.out.println("A cycle exists");
         else System.out.println("No cycle exists");
+        
+        
+        //                0    1    2    3    4    5
+        String[] p4_v = {"A", "B", "C", "D", "E", "F"};
+        int[][] p4_e = {
+            {0,1}, {0,4}, {1,2}, {2,3}, {3,5}, {4,5}
+        };
+        ArrayList<Vertex> e4V = new ArrayList<>();
+        for (String v : p4_v) { e4V.add(new Vertex(v)); }
+        ArrayList<Edge> e4E = new ArrayList<>();
+        for (int[] e : p4_e) {
+            e4E.add(new Edge(e4V.get(e[0]), e4V.get(e[1])));
+        }
+        Problem4 P4_3 = new Problem4(e4V, e4E);
+        if (P4_3.getCycle()) System.out.println("A cycle exists");
+        else System.out.println("No cycle exists");
     }
     
 }
