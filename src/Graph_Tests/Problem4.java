@@ -43,8 +43,9 @@ public class Problem4 {
                         Q.add(e.get_v());
                     } else {
                         // because this is a directed graph, if the Vertex has
-                        // been visited previously, then this generates a cycle
-                        if (e.get_v().getDiscovery() <= Q.peek().getDiscovery()) 
+                        // been visited previously, and is at a depth equal to or
+                        // less than the current "u", then there exists a cycle.
+                        if (e.get_v().getDiscovery() < Q.peek().getDiscovery()) 
                             cycle = true;
                     }
                 });
