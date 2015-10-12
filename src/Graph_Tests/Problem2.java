@@ -76,8 +76,13 @@ public class Problem2 {
         if (cycle.get(0) != cycle.get(cycle.size() - 1)) {
             System.out.println("Does not begin and end on the same Vertex");
             cycle = null;
+            return;
         } 
         
+        // verify that every edge in the graph has been 
+        G.E.stream().forEach((e) -> {
+            if (!e.isVisited()) cycle = null;
+        });
     }   
     
     /**
