@@ -54,14 +54,14 @@ public class Problem4 {
             Q.remove();
         }
         
+        // now that the BFS is complete, test "possible" candidates for 
+        // common ancestory in reverse order.
         possible.stream().forEach((e) -> {
             ArrayList<Vertex> list = Traverse(e.get_u());
             if (list.contains(e.get_v())) cycle = true;
-            else {
-                G.adj.get(e.get_v()).stream().forEach((e2) -> {
+            else G.adj.get(e.get_v()).stream().forEach((e2) -> {
                     if (list.contains(e2.get_v())) cycle = true;
                 });
-            }
         });
     }
     
