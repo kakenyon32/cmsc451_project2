@@ -59,7 +59,6 @@ public class Problem1 {
         time++;
         
         if (!G.adj.get(u).isEmpty()) {
-            System.out.println("searching " + u.toString() + " ... ");
             G.adj.get(u).stream().forEach((e)  -> {
                 switch (e.get_v().getColor()) {
                     case "WHITE":

@@ -50,53 +50,21 @@ public class Problem3 {
      */
     public void DFS_VISIT(Vertex u) {
         u.setColor("GRAY");
-        u.setDiscovery(time);
-        time++;
-            
         if (!G.adj.get(u).isEmpty()) {
             G.adj.get(u).stream().forEach((e)  -> {
                 switch (e.get_v().getColor()) {
                     case "WHITE":
-                        // if v has not yet been discovered, then (u,v) is a Tree edge
-                        e.setClassification("TREE");
                         e.get_v().setParent(u);
                         DFS_VISIT(e.get_v());
                         break;
                     case "GRAY":
                         // if v does not have parent u and has been discovered,
                         // but not finished then it is a back edge.
-                        if (u.getParent() != e.get_v()) {
-                            e.setClassification("BACK");
-                            cycle = true;
-                        } else { e.setClassification("TREE"); }
-                        break;
-                    case "BLACK":
-                        // get a list of ancestors
-                        ArrayList<Vertex> list = Traverse(e.get_v());
-                        // if u is an ancestor of v, then (u,v) is a forward edge
-                        if (list.contains(u)) e.setClassification("FORWARD");
-                        // if u is not an ancestor of v , then (u,v) is a cross edge
-                        else e.setClassification("CROSS");
+                        if (u.getParent() != e.get_v()) cycle = true;
                         break;
                 }
             });
         }
         u.setColor("BLACK");
-        u.setFinish(time);
-        time++;
-    }
-    
-    /**
-     * Traverses the ancestor path of a given Vertex
-     * @param u the Vertex to be traced
-     * @return a list of ancestors to a root Vertex
-     */
-    public ArrayList<Vertex> Traverse(Vertex u) {
-        ArrayList<Vertex> ancestors = new ArrayList<>();
-        while (u.getParent() != null) {
-            ancestors.add(u.getParent());
-            u = u.getParent();
-        }
-        return ancestors;
     }
 }

@@ -188,6 +188,33 @@ public class Test_Driver {
             {3, 0}, {3, 2}, {4, 2}, {4, 6}, {5, 0}, 
             {5, 2}, {6, 3}, {6, 4}
         };
+        // SET THE VERTICES
+        ArrayList<Vertex> V4_1 = new ArrayList<>();
+        for (String v : p4_req_verts) { V4_1.add(new Vertex(v)); }
+        // SET THE EDGES
+        ArrayList<Edge> E4_1 = new ArrayList<>();
+        for (int[] e : p4_req_edges) {
+            E4_1.add(new Edge(V4_1.get(e[0]), V4_1.get(e[1])));
+        }
+        // SET THE PROBLEM UP AND OUTPUT SOLUTION FOR PROBLEM 4 #1
+        Problem4 P4_1 = new Problem4(V4_1, E4_1);
+        if (P4_1.getCycle()) System.out.println("A cycle exists");
+        else System.out.println("No cycle exists");
+        //
+        String[] p4_my_verts = {"A", "B", "C", "D", "E", "F", "G"};
+        int[][] p4_my_edges = {
+            {0, 1}, {1, 2}, {2, 3}, {3, 4}, {3, 5}, {4, 6}, {5, 6}
+        };
+        ArrayList<Vertex> V4_2 = new ArrayList<>();
+        for (String v : p4_my_verts) { V4_2.add(new Vertex(v)); }
+        ArrayList<Edge> E4_2 = new ArrayList<>();
+        for (int[] e : p4_my_edges) {
+            E4_2.add(new Edge(V4_2.get(e[0]), V4_2.get(e[1])));
+        }
+        // SET THE PROBLEM UP AND OUTPUT SOLUTION FOR PROBLEM 4 #2
+        Problem4 P4_2 = new Problem4(V4_2, E4_2);
+        if (P4_2.getCycle()) System.out.println("A cycle exists");
+        else System.out.println("No cycle exists");
     }
     
 }

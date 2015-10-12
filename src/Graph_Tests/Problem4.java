@@ -16,12 +16,44 @@ import java.util.*;
 public class Problem4 {
     // The graph on which to perform the analysis
     public final Graph G;
+    private Queue<Vertex> Q = new LinkedList<>();
+    private boolean cycle = false;
     
     public Problem4(ArrayList<Vertex> V, ArrayList<Edge> E) {
         G = new Graph(V,E);
+        BFS(G, V.get(0));
     }
     
-    public void BFS(Graph G) {
-        // do stuff
+    public final void BFS(Graph G, Vertex start) {
+        G.V.stream().forEach((v) -> {
+            v.setColor("WHITE");
+            v.setDiscovery(0);
+            v.setParent(null);
+        });
+        start.setColor("GRAY");
+        Q.add(start);
+        while (!Q.isEmpty()) {
+            if (!G.adj.get(Q.peek()).isEmpty()) {
+                G.adj.get(Q.peek()).stream().forEach((e) -> {
+                    if (e.get_v().getColor().equals("WHITE")) {
+                        e.get_v().setColor("GRAY");
+                        e.get_v().setDiscovery(Q.peek().getDiscovery() + 1);
+                        e.get_v().setParent(Q.peek());
+                        e.setClassification("TREE");
+                        Q.add(e.get_v());
+                    } else {
+                        // because this is a directed graph, if the Vertex has
+                        // been visited previously, then this generates a cycle
+                        if (e.get_v().getDiscovery() <= Q.peek().getDiscovery()) 
+                            cycle = true;
+                    }
+                });
+            }
+            Q.peek().setColor("BLACK");
+            Q.remove();
+        }
     }
+    
+    /** @return whether a cycle exists in the BFS */
+    public boolean getCycle() { return cycle; }
 }
