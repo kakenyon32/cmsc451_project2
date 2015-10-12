@@ -143,6 +143,7 @@ public class Test_Driver {
         }
         // SET THE PROBLEM UP AND OUTPUT SOLUTION FOR PROBLEM 3 #1
         Problem3 P3_1 = new Problem3(V3_1, E3_1);
+        System.out.println("======= UNDIRECTED GRAPH CYCLE DETECTION PROBLEM 3 #1 =======");
         if (P3_1.G.getCycle()) { 
             System.out.println("The required input contains a cycle.\n"
                     + "Back edges are present."); 
@@ -168,6 +169,7 @@ public class Test_Driver {
         }
         // SET THE PROBLEM UP AND OUTPUT SOLUTION FOR PROBLME 3 #2
         Problem3 P3_2 = new Problem3(V3_2, E3_2);
+        System.out.println("======= UNDIRECTED GRAPH CYCLE DETECTION PROBLEM 3 #2 =======");
         if (P3_2.G.getCycle()) {
             System.out.println("The student input contains a cycle.\n"
                     + "Back edges are present");
@@ -203,6 +205,7 @@ public class Test_Driver {
         }
         // SET THE PROBLEM UP AND OUTPUT SOLUTION FOR PROBLEM 4 #1
         Problem4 P4_1 = new Problem4(V4_1, E4_1);
+        System.out.println("======= DIRECTED GRAPH CYCLE DETECTION PROBLEM 4 #1 =======");
         if (P4_1.getCycle()) System.out.println("A cycle exists");
         else System.out.println("No cycle exists");
         //
@@ -218,6 +221,7 @@ public class Test_Driver {
         }
         // SET THE PROBLEM UP AND OUTPUT SOLUTION FOR PROBLEM 4 #2
         Problem4 P4_2 = new Problem4(V4_2, E4_2);
+        System.out.println("======= DIRECTED GRAPH CYCLE DETECTION PROBLEM 4 #2 =======");
         if (P4_2.getCycle()) System.out.println("A cycle exists");
         else System.out.println("No cycle exists");
         
@@ -225,7 +229,7 @@ public class Test_Driver {
         //                0    1    2    3    4    5
         String[] p4_v = {"A", "B", "C", "D", "E", "F"};
         int[][] p4_e = {
-            {0,1}, {0,4}, {1,2}, {2,3}, {3,5}, {4,5}
+            {0,1}, {0,4}, {1,2}, {2,3}, {3,5}, {4,5}, {5,1}
         };
         ArrayList<Vertex> e4V = new ArrayList<>();
         for (String v : p4_v) { e4V.add(new Vertex(v)); }
@@ -234,6 +238,7 @@ public class Test_Driver {
             e4E.add(new Edge(e4V.get(e[0]), e4V.get(e[1])));
         }
         Problem4 P4_3 = new Problem4(e4V, e4E);
+        System.out.println("======= DIRECTED GRAPH CYCLE DETECTION PROBLEM 4 #3 =======");
         if (P4_3.getCycle()) System.out.println("A cycle exists");
         else System.out.println("No cycle exists");
     }
