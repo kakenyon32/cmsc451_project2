@@ -107,15 +107,89 @@ public class Test_Driver {
             E2_1.add(new Edge(V2_1.get(e[0]), V2_1.get(e[1])));
             E2_1.add(new Edge(V2_1.get(e[1]), V2_1.get(e[0])));
         }
-        //Problem2 P2_1 = new Problem2(V2_1, E2_1);
-        //LinkedList<Vertex> euler = P2_1.getEuler();
-        //euler.stream().forEach((v) -> {
-        //    System.out.print(v.toString() + " -> ");
-        //});
-        //System.out.println();
+        // OUTPUT THE RESULTS
+        System.out.println("======= EULER CIRCUIT DETECTION PROBLEM 2 #1 =======");
+        Problem2 P2_1 = new Problem2(V2_1, E2_1);
+        if (P2_1.EulerCircuit()) {
+            ArrayList<Vertex> list = P2_1.getEuler();
+            System.out.println("An Euler circuit exists");
+            System.out.print("Vertex traversal: ");
+            for (Iterator<Vertex> it = list.iterator(); it.hasNext();) {
+                Vertex v = it.next();
+                if (!it.hasNext()) System.out.println(v.toString());
+                else System.out.print(v.toString() + " -> ");
+            }
+        } else {
+            System.out.println("An Euler circuit does not exist for this graph.");
+        }
+        System.out.println();
+        
+        /* PROBLEM 2 STUDENT INPUT #1 */
+        //                       0    1    2    3    4    5    6
+        String[] p2_my_verts = {"1", "2", "3", "4", "5", "6", "7"};
+        int[][] p2_my_edges = {
+            {0, 1}, {0, 3}, {1, 2}, {2, 3}, {2, 4}, {3, 1},
+            {4, 5}, {5, 0}, {5, 2}, {5, 6}, {6, 0}
+        };
+        // SET THE VERTICES
+        ArrayList<Vertex> V2_2 = new ArrayList<>();
+        for (String v : p2_my_verts) { V2_2.add(new Vertex(v)); }
+        // SET THE EDGES
+        ArrayList<Edge> E2_2 = new ArrayList<>();
+        for (int[] e : p2_my_edges) {
+            E2_2.add(new Edge(V2_2.get(e[0]), V2_2.get(e[1])));
+            E2_2.add(new Edge(V2_2.get(e[1]), V2_2.get(e[0])));
+        }
+        // OUTPUT THE RESULTS
+        System.out.println("======= EULER CIRCUIT DETECTION PROBLEM 2 #2 =======");
+        Problem2 P2_2 = new Problem2(V2_2, E2_2);
+        if (P2_2.EulerCircuit()) {
+            ArrayList<Vertex> list  = P2_2.getEuler();
+            System.out.println("An Euler circuit exists");
+            System.out.print("Vertex traversal: ");
+            for (Iterator<Vertex> it = list.iterator(); it.hasNext();) {
+                Vertex v = it.next();
+                if (!it.hasNext()) System.out.println(v.toString());
+                else System.out.print(v.toString() + " -> ");
+            }
+        } else {
+            System.out.println("An Euler circuit does not exist for this graph.");
+        }
+        System.out.println();
         
         
-        
+        /* PROBLEM 2 STUDENT INPUT #2 */
+        //                       0    1    2    3    4    5    6
+        String[] p2_my_verts2 = {"1", "2", "3", "4", "5", "6", "7"};
+        int[][] p2_my_edges2 = {
+            {0, 1}, {0, 3}, {1, 2}, {2, 3}, {2, 4}, 
+            {4, 5}, {5, 0}, {5, 2}, {5, 6}, {6, 0}
+        };
+        // SET THE VERTICES
+        ArrayList<Vertex> V2_3 = new ArrayList<>();
+        for (String v : p2_my_verts2) { V2_3.add(new Vertex(v)); }
+        // SET THE EDGES
+        ArrayList<Edge> E2_3 = new ArrayList<>();
+        for (int[] e : p2_my_edges2) {
+            E2_3.add(new Edge(V2_3.get(e[0]), V2_3.get(e[1])));
+            E2_3.add(new Edge(V2_3.get(e[1]), V2_3.get(e[0])));
+        }
+        // OUTPUT THE RESULTS
+        System.out.println("======= EULER CIRCUIT DETECTION PROBLEM 2 #2 =======");
+        Problem2 P2_3 = new Problem2(V2_3, E2_3);
+        if (P2_3.EulerCircuit()) {
+            ArrayList<Vertex> list  = P2_3.getEuler();
+            System.out.println("An Euler circuit exists");
+            System.out.print("Vertex traversal: ");
+            for (Iterator<Vertex> it = list.iterator(); it.hasNext();) {
+                Vertex v = it.next();
+                if (!it.hasNext()) System.out.println(v.toString());
+                else System.out.print(v.toString() + " -> ");
+            }
+        } else {
+            System.out.println("An Euler circuit does not exist for this graph.");
+        }
+        System.out.println("\n\n");
         
         
         /* PROBLEM 3 OUTPUT */
