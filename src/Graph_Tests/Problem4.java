@@ -41,12 +41,16 @@ public class Problem4 {
                         e.get_v().setDiscovery(Q.peek().getDiscovery() + 1);
                         e.get_v().setParent(Q.peek());
                         Q.add(e.get_v());
-                    } else {
+                    } 
+                    else if (e.get_v().getColor().equals("BLACK")) {
                         // because this is a directed graph, if "v" has been
                         // visited previously, and is at a depth less than the
                         // current "u", then there may be a cycle.
-                        if (e.get_v().getDiscovery() < Q.peek().getDiscovery())
-                            possible.add(e);
+                        
+                        cycle = true;
+                        
+                        //if (e.get_v().getDiscovery() < Q.peek().getDiscovery())
+                        //    possible.add(e);
                     }
                 });
             }
@@ -56,6 +60,7 @@ public class Problem4 {
         
         // now that the BFS is complete, test "possible" candidates for 
         // common ancestory in reverse order.
+        /*
         possible.stream().forEach((e) -> {
             ArrayList<Vertex> list = Traverse(e.get_u());
             if (list.contains(e.get_v())) cycle = true;
@@ -63,6 +68,7 @@ public class Problem4 {
                     if (list.contains(e2.get_v())) cycle = true;
                 });
         });
+        */
     }
     
     /** @return whether a cycle exists in the BFS */
