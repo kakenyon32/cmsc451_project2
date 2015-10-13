@@ -79,7 +79,7 @@ public class Problem2 {
             return;
         } 
         
-        // verify that every edge in the graph has been 
+        // verify that every edge in the graph has been visited
         G.E.stream().forEach((e) -> {
             if (!e.isVisited()) cycle = null;
         });
